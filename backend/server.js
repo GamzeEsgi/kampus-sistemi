@@ -57,7 +57,11 @@ app.get('/api/test', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server ${PORT} portunda çalışıyor`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server ${PORT} portunda çalışıyor`);
+  });
+}
+
+module.exports = app;
 
